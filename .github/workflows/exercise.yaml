@@ -35,3 +35,4 @@ jobs:
       uses: actions/checkout@v3
     - run: chmod +x deployScript.sh
     - run: ./deployScript.sh
+    
