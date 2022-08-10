@@ -1,0 +1,37 @@
+name: Git Exercise
+
+on: [push]
+
+env: 
+  COLOUR: Purple
+  FOOD: Lasagna
+
+jobs:
+  build_job:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "$COLOUR"
+    - run: touch newFile.txt file2.md file3.txt
+    - run: rm newFile.txt
+    - run: mkdir moving_folder
+    - run: mv file2.md moving_folder
+    - run: echo $whoami
+    - run: echo "Hello!" >> file3.txt
+    - run: ls -a
+
+  test_job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@v3
+    - run: chmod +x testScript.sh
+    - run: ./testScript.sh
+    - run: echo $FOOD
+    
+  deploy_job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@v3
+    - run: chmod +x deployScript.sh
+    - run: ./deployScript.sh
